@@ -1,0 +1,14 @@
+version: '3.9'
+#which service is going to run docker file
+services:
+  app:
+    build:
+      context: .  #root directory (denotes where we have to build the docker file in current directory)
+      args:
+        - DEV=true
+    ports:
+      - "8000:8000" #helps to access the network when we want to connect to our server
+    volumes:
+      - ./app:/app #mapping directories from our system into the docker container(for updates so that changes reflect to project in real time)
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000" 
