@@ -11,6 +11,7 @@ services:
       - "8000:8000" #helps to access the network when we want to connect to our server
     volumes:
       - ./app:/app #mapping directories from our system into the docker container(for updates so that changes reflect to project in real time)
+      - dev-static-data:/vol/web
     command: >
       sh -c "python manage.py wait_for_db &&
              python manage.py migrate &&
@@ -34,6 +35,8 @@ services:
 
 volumes:
   dev-db-data:
+  dev-static-data:
+ 
 
 
 
